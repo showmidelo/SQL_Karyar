@@ -98,3 +98,50 @@ SELECT *
 FROM users
 WHERE name IN('abolfazl', 'nima');
 
+-- Updating VALUES
+
+UPDATE table_name     
+SET column1 = new-value1, ..., columnN = new_valueN
+WHERE condition;
+
+-- example
+
+UPDATE users
+SET family = 'mohammadi'
+WHERE family = 'bouazar';
+
+-- Replace INTO
+
+REPLACE INTO table_name(column_list)
+VALUES (value_list);
+
+REPLACE INTO users(id, name, family)
+VALUES (2, 'ali', 'rezazade');
+
+-- another way of replacing INTO
+
+REPLACE INTO table_name
+SET column1 = value1,
+    column2 = value2,
+    ...,
+    columnN = valueN;
+
+REPLACE INTO users
+SET id = 2,
+    level = 'admin',
+    name = 'ali',
+    family = 'rahmani';
+
+-- DELETE VALUES
+
+DELETE FROM table_name
+WHERE condition;
+
+DELETE FROM table_name
+WHERE family='bouazar';
+
+-- How to DELETE all the rows?
+
+TRUNCATE users;
+
+-- End of session 3
