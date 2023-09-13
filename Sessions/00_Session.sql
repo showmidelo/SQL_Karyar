@@ -123,5 +123,7 @@ CREATE TABLE users (
     birth_date DATETIME
 );
 
--- We also habe BOOL and JSON type
+-- We also have BOOL and JSON type
+
+
 
