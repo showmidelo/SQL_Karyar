@@ -94,3 +94,38 @@ SELECT name, CASE
     WHEN ISNULL(IndepYear) THEN 'not added'
     ELSE IndepYear
 END AS test FROM world.country;
+
+
+
+
+
+-- Transactions: We need ACID featurs for commiting transactions
+
+-- Syntax
+START TRANSACTION;
+{query 1}
+{query 2}
+...
+...
+COMMIT;
+
+-- SAVEPOINT
+
+START TRANSACTION;
+SAVEPOINT sp1;
+{query 1}
+SAVEPOINT sp2;
+{query 2}
+...
+SAVEPOINT spN;
+{query N}
+ROLLBACK TO SP_IDENTIFIER;
+COMMIT;
+
+-- example
+
+START TRANSACTION;
+UPDATE wallets SET balance = balance - 100000 WHERE user_id = 1;
+UPDATE wallets SET balance = balance + 100000 WHERE user_id = 2;
+COMMIT;
+
