@@ -62,3 +62,16 @@ SELECT EXISTS (SELECT * FROM world.country WHERE `IndepYear` IS NULL);
 
 
 SELECT EXISTS (SELECT * FROM world.country WHERE `Name` IS NULL);
+
+
+-- INNER QUERY, OUTER QUERY
+
+SELECT * FROM world.country
+WHERE `Population` > (SELECT AVG( Population) FROM world.city);
+
+
+
+SELECT t.Region FROM (SELECT Region, Sum(Population) as Sum_Pop, AVG(`LifeExpectancy`) as Avg_Life 
+                            from world.country
+                            GROUP BY `Region`) t
+WHERE t.Sum_Pop > 600000000
