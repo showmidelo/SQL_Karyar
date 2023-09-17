@@ -50,3 +50,15 @@ SELECT Name, AVG(Population) FROM world.country
 GROUP BY Name
 HAVING AVG(Population)>60000000
 ORDER BY AVG(`Population`) DESC ;
+
+
+-- EXISTS, NOT EXISTS: They return BOOLEAN values if queries have any RETURNING
+
+SELECT *
+FROM table_name
+WHERE EXISTS (subquery);
+
+SELECT EXISTS (SELECT * FROM world.country WHERE `IndepYear` IS NULL);
+
+
+SELECT EXISTS (SELECT * FROM world.country WHERE `Name` IS NULL);
