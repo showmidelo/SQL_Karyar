@@ -66,3 +66,31 @@ SELECT COALESCE(NULL, NULL, 'QUERA', 1);
 SELECT name, `Continent`, COALESCE(`IndepYear`, 'not added') AS test
 FROM world.country;
 
+
+
+-- Cast: it converts DATATYPE to each OTHERS
+
+-- example1
+
+SELECT CAST('2021-01-05 22:10:11' AS DATETIME); -- convert string to datatime
+
+SELECT STR_TO_DATE('2021-01-05 22:10:11', '%Y-%m-%d %H:%i:%s');
+
+-- Case: it works like if and else in python and do the CONDITIONs
+
+-- Syntax
+
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    ...
+    WHEN conditionN THEN resultN
+    ELSE result
+END
+
+-- example
+
+SELECT name, CASE
+    WHEN ISNULL(IndepYear) THEN 'not added'
+    ELSE IndepYear
+END AS test FROM world.country;
