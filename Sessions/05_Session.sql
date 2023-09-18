@@ -97,3 +97,48 @@ FROM world.city A, world.city B
 WHERE A.District <> B.District
 AND A.CountryCode = B.CountryCode
 ORDER BY A.District;
+
+
+-- text mining
+
+SELECT *
+FROM texts
+WHERE text LIKE '%design%'
+AND text LIKE '%toppings%'
+AND text LIKE '%symptom%';
+
+
+SELECT *
+FROM sakila.film f
+WHERE f.description LIKE '%Drama%'
+OR f.description LIKE '%Car%'
+OR f.description LIKE '%Emotional%';
+
+
+-- MATCH
+
+MATCH (col1,col2,...) AGAINST (expr [search_modifier]);
+
+-- You must create an index on the colums you want to full text search on them before running the match query cause you will get an error
+ALTER TABLE sakila.film ADD FULLTEXT name_of_index(title,description);
+
+-- default search that ignore stoplist
+SELECT *
+FROM sakila.film
+WHERE MATCH(title, description) AGAINST ('drama');
+
+-- BOOLEAN Mode search
+SELECT *
+FROM sakila.film
+WHERE MATCH(title, description) AGAINST ('+drama' IN BOOLEAN MODE);
+
+SELECT *
+FROM sakila.film
+WHERE MATCH(title, description) AGAINST ('-drama' IN BOOLEAN MODE);
+
+SELECT *
+FROM sakila.film
+WHERE MATCH(title, description) AGAINST ('drama' WITH QUERY EXPANSION);
+
+
+
