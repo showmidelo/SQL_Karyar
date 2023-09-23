@@ -23,10 +23,11 @@ Transaction:
 
     5. In case of any shut down during transaction before commit which statement is done automatically?
 
+    6. Why do we use InnoDB engine during transaction in mysql?
 
 Joining Tables:
 
-    1.
+    1. 
 
 
 
