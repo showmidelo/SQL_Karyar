@@ -129,3 +129,17 @@ UPDATE wallets SET balance = balance - 100000 WHERE user_id = 1;
 UPDATE wallets SET balance = balance + 100000 WHERE user_id = 2;
 COMMIT;
 
+
+
+-- begin a new transaction
+begin work; -- or start transaction; -- or set autocommit = 0;
+A.balance = A.balance - x;
+If above fails -> rollback;
+B.balance = B.balance + x;
+If above fails -> rollback;
+Update ledger table;
+If above fails -> rollback;
+Send email and SMS notification to both account holders.
+If above fails -> rollback;
+commit; --or begin work; to start next new transaction.
+-- transaction has ended.
