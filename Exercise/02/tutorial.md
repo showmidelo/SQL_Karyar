@@ -1,7 +1,7 @@
 # Third Exercise
 
 
-<div dir="rtl" align="justify">
+<div align="justify">
     <b style="font-size:28px;">
     
 Transaction:
@@ -27,7 +27,7 @@ Transaction:
 Joining Tables:
 
     1.
-    
+
 
 
 </b>
