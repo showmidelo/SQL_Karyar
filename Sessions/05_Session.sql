@@ -98,6 +98,32 @@ WHERE A.District <> B.District
 AND A.CountryCode = B.CountryCode
 ORDER BY A.District;
 
+-- SQL CREATE INDEX Statement
+
+/*
+The CREATE INDEX statement is used to create indexes in tables.
+
+Indexes are used to retrieve data from the database more quickly than otherwise. The users cannot see the indexes, they are just used to speed up searches/queries. */
+
+-- CREATE INDEX Syntax
+
+ -- Creates an index on a table. Duplicate values are allowed:
+CREATE INDEX index_name
+ON table_name (column1, column2, ...); 
+
+-- CREATE UNIQUE INDEX Syntax
+
+--Creates a unique index on a table. Duplicate values are not allowed:
+CREATE UNIQUE INDEX index_name
+ON table_name (column1, column2, ...); 
+
+-- DROP INDEX Statement
+
+-- The DROP INDEX statement is used to delete an index in a table.
+
+ALTER TABLE table_name
+DROP INDEX index_name; 
+
 
 -- text mining
 
@@ -140,5 +166,88 @@ SELECT *
 FROM sakila.film
 WHERE MATCH(title, description) AGAINST ('drama' WITH QUERY EXPANSION);
 
+-- Mysql INSERT Into Select
 
+/* The INSERT INTO SELECT statement copies data from one table and inserts it into another table.
+
+The INSERT INTO SELECT statement requires that the data types in source and target tables matches. */
+
+-- Syntax:
+
+INSERT INTO table2
+SELECT * FROM table1
+WHERE condition; 
+
+INSERT INTO table2 (column1, column2, column3, ...)
+SELECT column1, column2, column3, ...
+FROM table1
+WHERE condition; 
+-- example : 
+
+
+INSERT Into sakila.city(country_id,city)
+SELECT country_id,country FROM sakila.country;
+
+
+-- comment: if you want use one line comment you should use '' -- " and if you have multiple lines of columns you should use this structure
+
+/* Test
+
+test
+
+test */
+
+
+
+-- If null()
+
+SELECT IFNULL(IndepYear, "not added") FROM world.country;
+
+
+-- check constraint during creating TABLE
+
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CHECK (Age>=18)
+); 
+
+-- what if table was created before and we want to add a constraint to it?
+
+ALTER TABLE Persons
+ADD CHECK (Age>=18); 
+
+-- how about for multiple columns?
+
+ALTER TABLE Persons
+ADD CONSTRAINT CHK_PersonAge CHECK (Age>=18 AND City='Sandnes'); 
+
+-- how to drop it?
+
+ALTER TABLE Persons
+DROP CHECK CHK_PersonAge; 
+
+-- Create VIEW
+
+/* In SQL, a view is a virtual table based on the result-set of an SQL statement.
+
+A view contains rows and columns, just like a real table. The fields in a view are fields from one or more real tables in the database.
+
+You can add SQL statements and functions to a view and present the data as if the data were coming from one single table. */
+
+-- Syntax 
+CREATE VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition; 
+
+-- example
+
+CREATE View test AS
+SELECT * FROM world.country
+WHERE `IndepYear` < 1980;
+
+SELECT * FROM test;
 
