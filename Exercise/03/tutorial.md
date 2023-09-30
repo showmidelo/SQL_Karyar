@@ -44,7 +44,7 @@ Index in databases:
 
     4. Since an index improves performance, why don't we index all the columns by default? 
 
-    5. How can we see all indexes set on a table? and how we can remove any one of them? (try to write some querry)
+    5. How can we see all indexes set on a table? and how we can remove any one of them? (try to write some query)
 
     
 Stored procedure
