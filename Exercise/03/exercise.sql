@@ -1,4 +1,4 @@
--- first run below querry
+-- first run below query
 
  -- table creation
 CREATE TABLE studentMarks (stud_id SMALLINT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY, total_marks INT, grade VARCHAR(5));
