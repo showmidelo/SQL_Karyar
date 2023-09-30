@@ -111,5 +111,3 @@ SELECT *,
        NTILE(3) OVER(PARTITION BY college_name ORDER BY total_score DESC) AS group_num
 FROM college_user
 ORDER BY college_name, group_num;
-
-
