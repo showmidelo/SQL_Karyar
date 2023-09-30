@@ -47,6 +47,9 @@ Index in databases:
     5. How can we see all indexes set on a table? and how we can remove any one of them? (try to write some querry)
 
     
+Stored procedure
+
+    Check exercise.sql file to continue
 
 </b>
 </div>
