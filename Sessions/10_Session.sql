@@ -144,4 +144,11 @@ SELECT
 FROM tax_revenue;
 
 
+-- TRIGGER: check link below
 
+-- http://alihossein.ir/tutorials/%D8%A2%D9%85%D9%88%D8%B2%D8%B4-trigger-mysql
+
+
+-- SQL INJECTION
+
+-- https://www.w3schools.com/sql/sql_injection.asp
